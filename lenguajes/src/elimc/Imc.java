@@ -10,10 +10,23 @@ package elimc;
  * @author T-102
  */
 public class Imc {
-    Usuario user;
+    private Usuario user;
+    
+    public Imc(){
+        user=new Usuario();
+    }
     
    String calcular(){
-        
-       return "Estas flaco";
+       
+       float imc=user.getPeso()/(user.getAltura()*user.getAltura());
+       return "Este es tu imc " +imc;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }

@@ -10,6 +10,23 @@ package elimc;
  * @author T-102
  */
 public class Usuario {
-    float peso;
-    float altura;
+    private float peso;
+    private float altura;
+    
+    public void setPeso(float peso){
+        this.peso=peso;
+    } 
+    public void setAltura(float altura){
+        this. altura=altura;
+    }
+
+    public float getPeso(){
+        return peso;
+    }
+    public float getAltura(){
+        return altura;
+    }
+
 }
+
+
