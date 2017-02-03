@@ -14,8 +14,8 @@ public class AplicacionNomina {
         int x=2;
         Trabajador worker=new Trabajador();  /*constructor */
         worker.setNombre("pedro");               /* objeto*/
-        worker.paterno="Lopez";
-        worker.numeroSeguro=90;
+        worker.setPaterno("Lopez");
+        worker.setNumeroSeguro(90);
        // if(worker.numeroSeguro <=90)worker.numeroSeguro=100;
         
          //System.out.println("el nombre es " + worker.nombre);
