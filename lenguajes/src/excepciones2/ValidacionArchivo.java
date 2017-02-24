@@ -18,7 +18,7 @@ public class ValidacionArchivo {
       
      int indice1= nombre.indexOf(".");
      int indice2= nombre.length();
-     String extencion=nombre.substring(indice1-1, indice2);
+     String extencion=nombre.substring(indice1+1, indice2);
     
      
 
