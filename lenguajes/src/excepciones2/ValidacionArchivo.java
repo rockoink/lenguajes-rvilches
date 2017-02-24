@@ -23,7 +23,7 @@ public class ValidacionArchivo {
      
 
 if(!extencion.equals("txt"))    throw new ExtencionNoValidaExeption();
-throw new ExtencionNoValidaExeption();
+
 
 
    }
