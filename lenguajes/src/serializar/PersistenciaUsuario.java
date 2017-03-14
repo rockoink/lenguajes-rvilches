@@ -21,15 +21,17 @@ public class PersistenciaUsuario {
          
     }
     
-    public Usuario buscarNombre(Usuario u) throws Exception{
+    public Usuario buscarNombre(String nombre) throws Exception{
         File file=new File("basesita-usuarios");
-        String nombre=u.getNombre();
+       // String nombre=u.getNombre();
         FileInputStream fis=new FileInputStream(file);
         ObjectInputStream ois=new ObjectInputStream(fis);
      
         Usuario us=(Usuario)ois.readObject();
         if(us.getNombre().equals(nombre)){
+            System.out.println("us " +us);
             return us;
+            
         }else{
             return null;
         }
