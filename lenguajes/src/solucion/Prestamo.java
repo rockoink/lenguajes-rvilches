@@ -10,7 +10,7 @@ package solucion;
  * @author Sony
  */
 
-//excepcion solucion examen fsefwe
+//excepciohggñlkkljkn solucion examen fsefwe
 public class Prestamo {
     
     public static void prestarAlumno(Alumno alumno) throws Exception{
