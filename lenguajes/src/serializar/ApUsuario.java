@@ -5,6 +5,8 @@
  */
 package serializar;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sony
@@ -201,7 +203,7 @@ public class ApUsuario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("actualizar", jPanel6);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Aplicacion Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -251,7 +253,8 @@ public class ApUsuario extends javax.swing.JFrame {
         
         try{
             p.guardar(u);
-            JOptionPane.showConfirmDialog(this, "usuario guardado");
+            JOptionPane.showConfirmDialog(this, "ususario guardado");
+            
         }catch (Exception ex) {
             
             JOptionPane.showConfirmDialog(this, ex.getMessage());
@@ -263,22 +266,21 @@ public class ApUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         
 
-        String nombre=textoBuscar.getText();
+        //String nombre=textoBuscar.getText();
          
-          Usuario us=new Usuario(nombre,"","");
+          //Usuario us=new Usuario(nombre);
          
-         //us=textoBuscar.getText();
-         
-          PersistenciaUsuario p=new PersistenciaUsuario();
-        
-        try{
-         //   Usuario usu= p.buscarNombre(textoBuscar.getText());
-         p.buscarNombre(us);
+        //us=textoBuscar.getText();
+             try{
+              PersistenciaUsuario p=new PersistenciaUsuario();
+            Usuario usu= p.buscarNombre(textoBuscar.getText());
+            
+         p.buscarNombre(usu);
          JOptionPane.showConfirmDialog(this, "usuario encontrado");
                         
-                        jTable1.setValueAt(us.getNombre(), 0, 0);
-                        jTable1.setValueAt(us.getEmail(), 0, 1);
-                        jTable1.setValueAt(us.getEdad(), 0, 2);
+                        jTable1.setValueAt(usu.getNombre(), 0, 0);
+                      jTable1.setValueAt(usu.getEmail(), 0, 1);
+                    jTable1.setValueAt(usu.getEdad(), 0, 2);
         }catch (Exception ex) {
             
             JOptionPane.showConfirmDialog(this, ex.getMessage());
