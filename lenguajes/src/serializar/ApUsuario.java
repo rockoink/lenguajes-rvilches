@@ -60,7 +60,7 @@ public class ApUsuario extends javax.swing.JFrame {
 
         jLabel4.setText("edad");
 
-        jButton1.setText("buscar");
+        jButton1.setText("guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -278,12 +278,12 @@ public class ApUsuario extends javax.swing.JFrame {
          p.buscarNombre(usu.getNombre());
          JOptionPane.showConfirmDialog(this, "usuario encontrado");
                         
-                        jTable1.setValueAt(usu.getNombre(), 0, 0);
+                        jTable1.setValueAt(usu.getNombre(),0,1);
                       jTable1.setValueAt(usu.getEmail(), 0, 1);
                     jTable1.setValueAt(usu.getEdad(), 0, 2);
         }catch (Exception ex) {
             
-            JOptionPane.showConfirmDialog(this, ex.getMessage());
+            //JOptionPane.showConfirmDialog(this, ex.getMessage());
         }
 
         
