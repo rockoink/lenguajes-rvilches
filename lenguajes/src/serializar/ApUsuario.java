@@ -275,7 +275,7 @@ public class ApUsuario extends javax.swing.JFrame {
               PersistenciaUsuario p=new PersistenciaUsuario();
             Usuario usu= p.buscarNombre(textoBuscar.getText());
             
-         p.buscarNombre(usu);
+         p.buscarNombre(usu.getNombre());
          JOptionPane.showConfirmDialog(this, "usuario encontrado");
                         
                         jTable1.setValueAt(usu.getNombre(), 0, 0);
