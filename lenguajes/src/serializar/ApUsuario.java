@@ -43,9 +43,9 @@ public class ApUsuario extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         textoBuscar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        buscarPorNombre = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaUsuarios = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -105,7 +105,7 @@ public class ApUsuario extends javax.swing.JFrame {
                     .addComponent(textoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jButton1)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("guardar", jPanel2);
@@ -118,21 +118,21 @@ public class ApUsuario extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("buscar", jPanel3);
 
         jLabel5.setText("nombre");
 
-        jButton2.setText("buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarPorNombre.setText("buscar");
+        buscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarPorNombreActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -142,7 +142,7 @@ public class ApUsuario extends javax.swing.JFrame {
                 "nombre", "e-mail", "edad"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaUsuarios);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -157,7 +157,7 @@ public class ApUsuario extends javax.swing.JFrame {
                         .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2))
+                        .addComponent(buscarPorNombre))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -169,7 +169,7 @@ public class ApUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(textoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(buscarPorNombre)
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -185,7 +185,7 @@ public class ApUsuario extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("borrar", jPanel5);
@@ -198,7 +198,7 @@ public class ApUsuario extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("actualizar", jPanel6);
@@ -262,7 +262,7 @@ public class ApUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorNombreActionPerformed
         // TODO add your handling code here:
         
 
@@ -273,21 +273,23 @@ public class ApUsuario extends javax.swing.JFrame {
         //us=textoBuscar.getText();
              try{
               PersistenciaUsuario p=new PersistenciaUsuario();
-            Usuario usu= p.buscarNombre(textoBuscar.getText());
+            Usuario encontrado= p.buscarNombre(textoBuscar.getText());
             
-         p.buscarNombre(usu.getNombre());
-         JOptionPane.showConfirmDialog(this, "usuario encontrado");
-                        
-                        jTable1.setValueAt(usu.getNombre(),0,1);
-                      jTable1.setValueAt(usu.getEmail(), 0, 1);
-                    jTable1.setValueAt(usu.getEdad(), 0, 2);
-        }catch (Exception ex) {
+                        tablaUsuarios.setValueAt(encontrado.getNombre(),0,0);
+                      tablaUsuarios.setValueAt(encontrado.getEmail(), 0, 1);
+                    tablaUsuarios.setValueAt(encontrado.getEdad(), 0, 2);
+        }catch (NullPointerException e) {
+            Object[]opciones={"ni modo"};
+            int n=JOptionPane.showOptionDialog(this,"Usuario no encontrado","nada",JOptionPane.PLAIN_MESSAGE,JOptionPane.QUESTION_MESSAGE,
+                    null,opciones,opciones[0]);
+        }catch(Exception e){
             
-            //JOptionPane.showConfirmDialog(this, ex.getMessage());
+            
+            JOptionPane.showConfirmDialog(this, e.getMessage());
         }
 
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarPorNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,8 +327,8 @@ public class ApUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarPorNombre;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -340,7 +342,7 @@ public class ApUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaUsuarios;
     private javax.swing.JTextField textoBuscar;
     private javax.swing.JTextField textoEdad;
     private javax.swing.JTextField textoEmail;
