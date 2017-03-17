@@ -26,15 +26,10 @@ public class PersistenciaUsuario {
        // String nombre=u.getNombre();
         FileInputStream fis=new FileInputStream(file);
         ObjectInputStream ois=new ObjectInputStream(fis);
-     
+        Usuario encontrado=null;
         Usuario us=(Usuario)ois.readObject();
-        if(us.getNombre().equals(nombre)){
-            System.out.println("us " +us);
-            return us;
+        if(us.getNombre().equals(nombre))encontrado=us;
             
-        }else{
-            return null;
-        }
-        
-    }
+            return encontrado;
+            }
 }
