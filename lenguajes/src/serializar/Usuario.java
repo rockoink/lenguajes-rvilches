@@ -5,6 +5,8 @@
  */
 package serializar;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sony
@@ -12,7 +14,7 @@ package serializar;
 
 //clase usuario inicializar variables
 //dsvdsfes
-public class Usuario {
+public class Usuario implements Serializable {
     
         private String nombre;
     private String email;
