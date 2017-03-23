@@ -5,9 +5,14 @@
  */
 package serializar;
 import java.io.*;
+import java.util.ArrayList;
 
 public class PersistenciaUsuario {
     
+    ArrayList<Usuario> usuarios;
+    public PersistenciaUsuario(){
+        usuarios=new ArrayList<Usuario>();
+    }
     /*
     primer metodo de tipo accion guardar
     
@@ -15,9 +20,17 @@ public class PersistenciaUsuario {
     
     public void guardar(Usuario u) throws Exception{
         File file=new File("basesita-usuarios");
+     
+        if (file.exists()){
+        usuarios =busquedaT();
+        
+        
+    }
+        
         FileOutputStream fos=new FileOutputStream(file);
         ObjectOutputStream oos=new ObjectOutputStream(fos);
-        oos.writeObject(u);
+        usuarios.add(u);
+        oos.writeObject(usuarios);
          
     }
     
@@ -32,4 +45,15 @@ public class PersistenciaUsuario {
             
             return encontrado;
             }
+    
+    public ArrayList<Usuario> busquedaT() throws Exception {
+        Usuario u=new Usuario();
+        File file=new File("base");
+        FileInputStream fis= new FileInputStream(file);
+        ObjectInputStream ois= new ObjectInputStream(fis);
+        usuarios=(ArrayList<Usuario>) ois.readObject();
+        return usuarios;
+        
+        
+    }
 }
