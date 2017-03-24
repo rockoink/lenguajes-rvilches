@@ -19,14 +19,10 @@ public class PersistenciaUsuario {
     */
     
     public void guardar(Usuario u) throws Exception{
-        File file=new File("basesita-usuarios");
+        File file=new File("tabla-usuario");
      
-        if (file.exists()){
-        usuarios =busquedaT();
-        
-        
-    }
-        
+        if (file.exists()) usuarios =busquedaT();
+           
         FileOutputStream fos=new FileOutputStream(file);
         ObjectOutputStream oos=new ObjectOutputStream(fos);
         usuarios.add(u);
@@ -35,7 +31,7 @@ public class PersistenciaUsuario {
     }
     
     public Usuario buscarNombre(String nombre) throws Exception{
-        File file=new File("basesita-usuarios");
+        File file=new File("tabla-usuario");
        // String nombre=u.getNombre();
         FileInputStream fis=new FileInputStream(file);
         ObjectInputStream ois=new ObjectInputStream(fis);
@@ -48,11 +44,22 @@ public class PersistenciaUsuario {
     
     public ArrayList<Usuario> busquedaT() throws Exception {
         Usuario u=new Usuario();
-        File file=new File("base");
+        File file=new File("tabla-usuario");
         FileInputStream fis= new FileInputStream(file);
         ObjectInputStream ois= new ObjectInputStream(fis);
         usuarios=(ArrayList<Usuario>) ois.readObject();
         return usuarios;
+        
+        
+    }
+    
+    //buscar por id
+    public Usuario buscarPorId(int id) throws Exception{
+        Usuario buscado=null;
+       usuarios= busquedaT();
+       // comienzqa la busqueda
+       buscado=usuarios.get(id);
+       return buscado;
         
         
     }
