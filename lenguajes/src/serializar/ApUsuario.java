@@ -335,16 +335,15 @@ public class ApUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPorNombreActionPerformed
 
     private void buscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIdActionPerformed
-       
-        
-        try{
+
+                     try{
               PersistenciaUsuario p=new PersistenciaUsuario();
-             // id=Integer.parseInt(textoId.getText());
-           // (ArrayList<Usuario>;
+              int num=Integer.parseInt(textoId.getText());
+            Usuario buscado= p.buscarPorId(num);
             
-                        tablaUsuarios.setValueAt(encontrado.getNombre(),0,0);
-                      tablaUsuarios.setValueAt(encontrado.getEmail(), 0, 1);
-                    tablaUsuarios.setValueAt(encontrado.getEdad(), 0, 2);
+                        tablaUsuarios.setValueAt(buscado.getNombre(),0,0);
+                      tablaUsuarios.setValueAt(buscado.getEmail(), 0, 1);
+                    tablaUsuarios.setValueAt(buscado.getEdad(), 0, 2);
         }catch (NullPointerException e) {
             Object[]opciones={"ni modo"};
             int n=JOptionPane.showOptionDialog(this,"Usuario no encontrado","nada",JOptionPane.PLAIN_MESSAGE,JOptionPane.QUESTION_MESSAGE,
@@ -354,6 +353,9 @@ public class ApUsuario extends javax.swing.JFrame {
             
             JOptionPane.showConfirmDialog(this, e.getMessage());
         }
+
+
+        
 
 
 
